@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Aktivera Fortnox</title></head>
+<body>
+  <h1>Aktivera Fortnox-integration</h1>
+  <button onclick="location.href = authUrl()">Aktivera</button>
+
+  <script>
+    function authUrl() {
+      const clientId    = 'DIN_CLIENT_ID';
+      const redirectUri = encodeURIComponent('urn:ietf:wg:oauth:2.0:oob');
+      const scope       = encodeURIComponent('invoice customer');
+      const state       = encodeURIComponent(Math.random().toString(36).slice(2));
+      return `https://apps.fortnox.se/oauth-v1/auth`
+           + `?client_id=${clientId}`
+           + `&scope=${scope}`
+           + `&response_type=code`
+           + `&redirect_uri=${redirectUri}`
+           + `&state=${state}`;
+    }
+  </script>
+</body>
+</html>
